@@ -888,7 +888,7 @@
             .mobile-menu {
                 width: 75%;
             }
-            .cta-button {
+            #cta-button1 {
                 display: none;
             }
         }
@@ -919,7 +919,7 @@
                 <i class="fas fa-moon"></i>
             </div>
             
-            <a href="https://t.me/tendderr_bot"><button class="cta-button">Қазір қосу</button></a>
+            <a href="https://t.me/tendderr_bot"><button class="cta-button" id="cta-button1">Қазір қосу</button></a>
             
             <!-- Бургер меню -->
             <button class="burger-menu" id="burger-menu">
@@ -1015,30 +1015,30 @@
                 <div class="pricing-card">
                     <h3 class="plan-name">TenderPro Basic</h3>
                     <div class="price-container">
-                        <div class="price" id="basic-price">10 000₸ <span>/ ай</span></div>
+                        <div class="price" id="basic-price">4 990₸ <span>/ ай</span></div>
                         <div class="savings-badge" id="basic-savings" style="display: none;">17% үнемдеу!</div>
                     </div>
                     <ul class="pricing-features">
                         <li><i class="fas fa-check"></i> 3 категорияға подписка</li>
-                        <li><i class="fas fa-check"></i> 50 ИИ талдау / ай</li>
+                        <li><i class="fas fa-check"></i> 90 ИИ талдау / ай</li>
                         <li><i class="fas fa-check"></i> Telegram хабарламалары</li>
                     </ul>
-                    <button class="cta-button">Таңдау</button>
+                    <a href="https://t.me/tendderr_bot"><button class="cta-button">Таңдау</button></a>
                 </div>
                 
                 <div class="pricing-card">
                     <h3 class="plan-name">TenderPro Pro</h3>
                     <div class="price-container">
-                        <div class="price" id="pro-price">25 000₸ <span>/ ай</span></div>
+                        <div class="price" id="pro-price">9 990₸ <span>/ ай</span></div>
                         <div class="savings-badge" id="pro-savings" style="display: none;">17% үнемдеу!</div>
                     </div>
                     <ul class="pricing-features">
                         <li><i class="fas fa-check"></i> 10 категорияға подписка</li>
-                        <li><i class="fas fa-check"></i> 100 ИИ талдау</li>
+                        <li><i class="fas fa-check"></i> 300 ИИ талдау</li>
                         <li><i class="fas fa-check"></i> Басымдықты қолдау</li>
                         <li><i class="fas fa-check"></i> 🔜 Жақында: ИИ тауар іздеу satu.kz, kaspi.kz, jusan маркетплейстерінде</li>
                     </ul>
-                    <button class="cta-button">Таңдау</button>
+                    <a href="https://t.me/tendderr_bot"></a><button class="cta-button">Таңдау</button></a>
                 </div>
             </div>
         </div>
@@ -1255,8 +1255,8 @@
             monthlyBtn.addEventListener('click', () => {
                 monthlyBtn.classList.add('active');
                 yearlyBtn.classList.remove('active');
-                basicPrice.innerHTML = '10 000₸ <span>/ ай</span>';
-                proPrice.innerHTML = '25 000₸ <span>/ ай</span>';
+                basicPrice.innerHTML = '4 990₸ <span>/ ай</span>';
+                proPrice.innerHTML = '9 990₸ <span>/ ай</span>';
                 basicSavings.style.display = 'none';
                 proSavings.style.display = 'none';
             });
@@ -1264,8 +1264,8 @@
             yearlyBtn.addEventListener('click', () => {
                 yearlyBtn.classList.add('active');
                 monthlyBtn.classList.remove('active');
-                basicPrice.innerHTML = '100 000₸ <span>/ жыл</span>';
-                proPrice.innerHTML = '250 000₸ <span>/ жыл</span>';
+                basicPrice.innerHTML = '49 990₸ <span>/ жыл</span>';
+                proPrice.innerHTML = '99 990₸ <span>/ жыл</span>';
                 basicSavings.style.display = 'inline-block';
                 proSavings.style.display = 'inline-block';
             });
