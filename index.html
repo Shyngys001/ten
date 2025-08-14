@@ -896,6 +896,66 @@
         a{
             text-decoration: none;
         }
+
+
+         /* Как это работает */
+         .how-it-works {
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 60px;
+        }
+
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 60px;
+            left: 10%;
+            right: 10%;
+            height: 4px;
+            background: var(--primary);
+            z-index: 1;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            width: 180px;
+            padding: 30px 20px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+
+        .step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .step p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -995,6 +1055,52 @@
             <div class="stats">500 000+</div>
             <p class="proof-text">Қазақстанда 500 000+ адам тендермен айналысады. Олардың ішінде TenderPro қосып табысын арттырғандар саны күн сайын артып келеді.</p>
             <a href="#pricing" class="highlight-cta">Сен де қапы қалма — қазір қосыл да табысыңды арттыр!</a>
+        </div>
+    </section>
+
+
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2>Қалай жұмыс істейді?</h2>
+                <p class="section-subtitle">TenderPro пайдаланудың қарапайым 5 қадамы</p>
+            </div>
+            
+            <div class="steps">
+                <div class="step animate-on-scroll">
+                    <div class="step-number">1</div>
+                    <h3>Орнату</h3>
+                    <p>Категорияны және сүзгілерді орнату</p>
+                </div>
+                
+                <div class="step animate-on-scroll">
+                    <div class="step-number">2</div>
+                    <h3>Іздеу</h3>
+                    <p>Бот белсенді тендерлерді табады</p>
+                </div>
+                
+                <div class="step animate-on-scroll">
+                    <div class="step-number">3</div>
+                    <h3>Хабарлау</h3>
+                    <p>Жаңа тендер туралы Telegram-ға хабарлайды</p>
+                </div>
+                
+                <div class="step animate-on-scroll">
+                    <div class="step-number">4</div>
+                    <h3>Талдау</h3>
+                    <p>AI толық талдау жасайды</p>
+                </div>
+                
+                <div class="step animate-on-scroll">
+                    <div class="step-number">5</div>
+                    <h3>Жеңіс</h3>
+                    <p>Ұсынысты беріп, жеңіске жетесіз</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 60px;" class="animate-on-scroll">
+                <a href="https://t.me/tenderprokz_bot"><button class="cta-button">Тіркелуді бастау</button></a>
+            </div>
         </div>
     </section>
 
