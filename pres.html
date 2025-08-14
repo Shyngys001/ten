@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TenderPro — Қазақстандағы бірінші AI тендер көмекшісі</title>
+  <meta name="description" content="TenderPro — госЗакуппен тікелей интеграцияланған Қазақстандағы бірінші және бірегей AI-бот. Тендер табу, сүзгілеу, жедел хабарлау және ИИ талдау." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0b12; --panel:#0f1220; --card:#12162a; --text:#e9ecf4; --muted:#aab3c6;
+      --primary:#7aa2ff; --accent:#71f0c8; --danger:#ff5a7a; --ok:#22c55e;
+      --ring:rgba(122,162,255,.35); --radius:16px; --shadow:0 20px 60px rgba(0,0,0,.35);
+      --grad: radial-gradient(900px 600px at 10% -10%, rgba(113,240,200,.25), transparent 60%),
+              radial-gradient(700px 500px at 120% 10%, rgba(122,162,255,.20), transparent 60%),
+              linear-gradient(180deg, #0b0b12 0%, #090a12 100%);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--grad);color:var(--text);line-height:1.65}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+    /* ================= NAV ================= */
+    .nav{position:sticky;top:0;backdrop-filter:saturate(1.3) blur(10px);background:rgba(11,11,18,.55);z-index:50;border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.3px}
+    .logo{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--primary),var(--accent));box-shadow:0 8px 24px rgba(113,240,200,.25)}
+    .menu{display:flex;gap:18px;align-items:center}
+    .menu a{padding:8px 10px;color:var(--muted)}
+    .menu a:hover{color:var(--text)}
+    .cta{padding:10px 16px;border-radius:999px;background:linear-gradient(135deg,var(--primary),var(--accent));color:#0b0b12;font-weight:700}
+    .cta:hover{filter:brightness(1.05)}
+    .burger{display:none}
+    @media (max-width:860px){
+      .menu{display:none}
+      .burger{display:block;padding:8px 10px;border:1px solid rgba(255,255,255,.08);border-radius:12px}
+      .mobile{display:none;position:absolute;inset:58px 12px auto 12px;background:rgba(15,18,32,.98);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:14px}
+      .mobile a{display:block;padding:12px;border-radius:10px;color:var(--muted)}
+      .mobile a:hover{background:rgba(255,255,255,.04);color:var(--text)}
+    }
+    /* ================= HERO ================= */
+    .hero{padding:64px 0 26px}
+    .chip{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border:1px solid rgba(255,255,255,.10);border-radius:999px;color:var(--muted);background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02))}
+    .h-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center;margin-top:18px}
+    .h1{font-size:40px;line-height:1.15;letter-spacing:.2px}
+    .lead{color:var(--muted);margin-top:12px}
+    .h-actions{display:flex;gap:12px;align-items:center;margin-top:18px}
+    .ghost{padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.12)}
+    .marquee{margin-top:22px;border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.04),transparent)}
+    .marquee-track{display:flex;gap:28px;white-space:nowrap;animation:mar 26s linear infinite;padding:10px 12px}
+    @keyframes mar{to{transform:translateX(-50%)}}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .sample{padding:18px}
+    pre{white-space:pre-wrap;overflow:auto;background:#0e1325;border-radius:12px;border:1px solid rgba(255,255,255,.06);padding:16px}
+    /* ================ FEATURES ================ */
+    .section{padding:64px 0}
+    .title{font-size:28px;margin-bottom:10px}
+    .muted{color:var(--muted)}
+    .f-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+    .feat{padding:18px}
+    .feat h3{font-size:18px;margin-bottom:6px}
+    .badge{display:inline-block;font-size:12px;padding:4px 8px;border:1px solid rgba(255,255,255,.10);border-radius:999px;color:var(--muted)}
+    @media (max-width:980px){.h-grid{grid-template-columns:1fr}.f-grid{grid-template-columns:1fr 1fr}} 
+    @media (max-width:640px){.f-grid{grid-template-columns:1fr}}
+    /* ================ HOW IT WORKS ================ */
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+    .step{padding:16px;position:relative}
+    .step b{font-size:18px}
+    .step:before{content:attr(data-num);position:absolute;top:14px;right:14px;color:var(--muted);font-weight:700}
+    @media (max-width:980px){.steps{grid-template-columns:1fr 1fr}}
+    @media (max-width:520px){.steps{grid-template-columns:1fr}}
+    /* ================ PRICING ================ */
+    .pricing-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .toggle{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:6px;border-radius:999px}
+    .toggle button{padding:8px 12px;border-radius:999px;border:none;background:transparent;color:var(--muted);cursor:pointer}
+    .toggle button.active{background:linear-gradient(135deg,var(--primary),var(--accent));color:#0b0b12;font-weight:700}
+    .p-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:18px}
+    .price{padding:18px}
+    .price h3{font-size:20px}
+    .num{font-size:34px;font-weight:800;margin:10px 0}
+    .list{margin:10px 0 14px}
+    .list li{margin:6px 0;color:var(--muted)}
+    @media (max-width:820px){.p-grid{grid-template-columns:1fr}}
+    /* ================ FAQ ================ */
+    details{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:12px}
+    summary{cursor:pointer;font-weight:600}
+    details p{color:var(--muted);margin-top:8px}
+    .faq{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+    @media (max-width:820px){.faq{grid-template-columns:1fr}}
+    /* ================ FOOTER ================ */
+    footer{border-top:1px solid rgba(255,255,255,.06);padding:26px 0;color:var(--muted)}
+    .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:18px}
+    .cols a{color:var(--muted)}
+    .cols a:hover{color:var(--text)}
+    @media (max-width:980px){.cols{grid-template-columns:1fr 1fr}}
+    @media (max-width:520px){.cols{grid-template-columns:1fr}}
+    /* util */
+    .grid2{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+    @media (max-width:920px){.grid2{grid-template-columns:1fr}}
+    .hint{font-size:12px;color:var(--muted)}
+    .ring{box-shadow:0 0 0 6px var(--ring)}
+  </style>
+</head>
+<body>
+  <!-- ============== NAV ============== -->
+  <nav class="nav">
+    <div class="wrap nav-in">
+      <div class="brand">
+        <div class="logo">⚡</div>
+        <div>
+          <div style="font-weight:800">TenderPro</div>
+          <div class="hint">AI тендер көмекші</div>
+        </div>
+      </div>
+      <div class="menu">
+        <a href="#home">Басты</a>
+        <a href="#features">Мүмкіндіктер</a>
+        <a href="#pricing">Баға</a>
+        <a href="#demo">Демо</a>
+        <a href="#faq">FAQ</a>
+        <a class="cta" href="https://t.me/tenderprokz_bot" target="_blank" rel="noopener">Қазір қосу</a>
+      </div>
+      <button class="burger" id="burger">Мәзір</button>
+    </div>
+    <div class="wrap mobile" id="mobile">
+      <a href="#home">Басты</a>
+      <a href="#features">Мүмкіндіктер</a>
+      <a href="#pricing">Баға</a>
+      <a href="#demo">Демо</a>
+      <a href="#faq">FAQ</a>
+      <a class="cta" href="https://t.me/tenderprokz_bot" target="_blank" rel="noopener" style="display:block;text-align:center;margin-top:6px">Қазір қосу</a>
+    </div>
+  </nav>
+
+  <!-- ============== HERO ============== -->
+  <header class="hero" id="home">
+    <div class="wrap">
+      <span class="chip">🇰🇿 Қазақстандағы <b style="margin-left:4px">бірінші және бірегей</b> — госЗакуппен тікелей интеграция</span>
+      <div class="h-grid">
+        <div>
+          <h1 class="h1">TenderPro — тендерді <span style="color:var(--accent)">табуды</span>, <span style="color:var(--primary)">сүзгілеуді</span> және <span style="color:#ffe27a">ИИ талдауды</span> автоматтандырады</h1>
+          <p class="lead">Бот белсенді тендерлерді атауы, бағасы және категориясы бойынша іздейді, ал жаңа тендер шықса — Telegram арқылы бірден хабарлайды.</p>
+          <div class="h-actions">
+            <a class="cta" href="https://t.me/tenderprokz_bot" target="_blank" rel="noopener">Қазір қосу</a>
+            <a class="ghost" href="#demo">Демоны көру</a>
+          </div>
+          <div class="marquee card" aria-hidden="true">
+            <div class="marquee-track">
+              <span>AI₸ • AIAI₸ • AI • ГосЗакуп • TenderPro • Жеңіс стратегиясы • Telegram ескерту</span>
+              <span>AI₸ • AIAI₸ • AI • ГосЗакуп • TenderPro • Жеңіс стратегиясы • Telegram ескерту</span>
+            </div>
+          </div>
+        </div>
+        <div class="card sample ring">
+          <div class="badge">ИИ талдау нәтижесінің мысалы</div>
+<pre>
+🔎 Подробная информация о тендере
+
+🆔 ID: 15226586
+🏷 Название (RU): Услуги медицинского осмотра персонала
+🏷 Название (KZ): Персоналды медициналық тексеру қызметтері
+
+🏢 Организатор (RU): Коммунальное государственное учреждение "Улкен Нарынская средняя школа" отдела образования по району Үлкен Нарын управления образования Восточно-Казахстанской области
+🏢 Организатор (KZ): Шығыс Қазақстан облысы білім басқармасы Үлкен Нарын ауданы бойынша білім бөлімінің "Үлкен Нарын орта мектебі" КММ
+
+👤 Количество заявок: 0
+💰 Сумма: 263,736 ₸
+💰 Сумма после заявок: 263,736 ₸
+📋 БИН: 000740002536
+🆔 PID: 38391
+
+📅 Дата публикации: 2025-08-14 07:58
+🚀 Дата начала: 2025-08-14 08:00
+⏳ Дата окончания: 2025-08-18 16:57
+</pre>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============== FEATURES ============== -->
+  <section class="section" id="features">
+    <div class="wrap">
+      <h2 class="title">Қуатты мүмкіндіктер</h2>
+      <p class="muted">TenderPro — тендерлерді жеңу үшін қажетті барлық құралдарды қамтиды</p>
+      <div class="f-grid">
+        <div class="card feat">
+          <h3>🔍 Тендерді іздеу</h3>
+          <p class="muted">Атауы, бағасы және категориясы бойынша. Тек <b>белсенді</b> тендерлерді көрсету.</p>
+        </div>
+        <div class="card feat">
+          <h3>📨 Жедел хабарлау</h3>
+          <p class="muted">Тіркелген категорияда жаңа тендер шықса — Telegram-ға бірден жібереді. Кілт сөз бен баға бойынша алдын ала сүзгілер.</p>
+        </div>
+        <div class="card feat">
+          <h3>🤖 ИИ талдау</h3>
+          <p class="muted">Ұйым, БИН, PID, сома, өтінім саны, мерзімдер — бәрі бір жерде. Жеңіс стратегиясын ұсыну.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== HOW IT WORKS ============== -->
+  <section class="section">
+    <div class="wrap">
+      <h2 class="title">TenderPro қалай жұмыс істейді?</h2>
+      <div class="steps">
+        <div class="card step" data-num="1"><b>Категорияны таңда</b><p class="muted">Кілт сөздер мен баға шектерін орнат.</p></div>
+        <div class="card step" data-num="2"><b>Іздеу</b><p class="muted">Бот белсенді тендерлерді жылдам табады.</p></div>
+        <div class="card step" data-num="3"><b>Жедел ескерту</b><p class="muted">Жаңа тендер шыққан сәтте Telegram-да.</p></div>
+        <div class="card step" data-num="4"><b>ИИ талдау</b><p class="muted">Толық ақпарат пен стратегия. Өтінім беріп, жең.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== PRICING ============== -->
+  <section class="section" id="pricing">
+    <div class="wrap">
+      <div class="pricing-head">
+        <div>
+          <h2 class="title">Төлемдік жоспарлар</h2>
+          <p class="muted">Өзіңізге лайық тарифті таңдаңыз</p>
+        </div>
+        <div class="toggle" role="tablist" aria-label="Жоспар түрі">
+          <button id="mBtn" class="active" aria-selected="true">Айлық</button>
+          <button id="yBtn" aria-selected="false">Жылдық <span class="hint">(2 ай тегін)</span></button>
+        </div>
+      </div>
+      <div class="p-grid">
+        <div class="card price">
+          <h3>TenderPro Basic</h3>
+          <div class="num" data-monthly>4 990₸ <span class="hint">/ ай</span></div>
+          <div class="num" data-yearly style="display:none">49 900₸ <span class="hint">/ жыл</span></div>
+          <ul class="list">
+            <li>3 категорияға жазылу</li>
+            <li>90 ИИ талдау / ай</li>
+            <li>Telegram хабарламалары</li>
+          </ul>
+          <a class="cta" href="https://t.me/tenderprokz_bot" target="_blank" rel="noopener">Таңдау</a>
+        </div>
+        <div class="card price ring">
+          <h3>TenderPro Pro</h3>
+          <div class="num" data-monthly>9 990₸ <span class="hint">/ ай</span></div>
+          <div class="num" data-yearly style="display:none">99 900₸ <span class="hint">/ жыл</span></div>
+          <ul class="list">
+            <li>10 категорияға жазылу</li>
+            <li>300 ИИ талдау / ай</li>
+            <li>Басымдықты қолдау</li>
+            <li>🔜 Маркетплейс AI іздеу (satu, kaspi, jusan)</li>
+          </ul>
+          <a class="cta" href="https://t.me/tenderprokz_bot" target="_blank" rel="noopener">Таңдау</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== DEMO ============== -->
+  <section class="section" id="demo">
+    <div class="wrap grid2">
+      <div>
+        <h2 class="title">Демо — AI талдауының артықшылығы</h2>
+        <p class="muted">TenderPro сіз үшін тендерді тауып қана қоймайды, сонымен қатар ұтып алу мүмкіндігін арттыру үшін толық контекст береді: ұйымдастырушы, БИН, бюджет, мерзімдер және өтінім динамикасы.</p>
+        <ul class="list">
+          <li>Толық мәліметтер: ID, PID, БИН, сомалар</li>
+          <li>Қазақша/орысша атаулар және ұйым мәліметі</li>
+          <li>Мерзімдер: жариялау, басталу, аяқталу</li>
+          <li>Өтінімдер саны және бағалау</li>
+        </ul>
+        <div class="h-actions" style="margin-top:16px">
+          <a class="cta" href="https://t.me/tenderprokz_bot" target="_blank" rel="noopener">Ботты іске қосу</a>
+          <a class="ghost" href="#pricing">Тарифтерді көру</a>
+        </div>
+      </div>
+      <div class="card sample">
+<pre>
+📌 Нысанаңызға дәл келетін тендер шықты!
+• Категория: Денсаулық сақтау
+• Кілт сөз: «медициналық тексеру»
+• Баға ≤ 300 000 ₸
+
+➡️ Толық ақпарат жоғарыдағы мысалда
+</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== FAQ ============== -->
+  <section class="section" id="faq">
+    <div class="wrap">
+      <h2 class="title">Жиі қойылатын сұрақтар</h2>
+      <div class="faq">
+        <details>
+          <summary>TenderPro қандай платформаларда жұмыс істейді?</summary>
+          <p>Telegram-бот ретінде жұмыс істейді: <a href="https://t.me/tenderprokz_bot" target="_blank" rel="noopener">@tenderprokz_bot</a>.</p>
+        </details>
+        <details>
+          <summary>Қандай дереккөздер қолданылады?</summary>
+          <p>ГосЗакуп жүйесімен тікелей интеграция. Белсенді тендерлерді көрсетеді және жаңа тендерлерді жедел жібереді.</p>
+        </details>
+        <details>
+          <summary>ИИ талдау қаншалықты пайдалы?</summary>
+          <p>Тендер контексін толық береді (ұйым, БИН, PID, сома, мерзімдер, өтінімдер саны) және шешім қабылдауды жылдамдатады.</p>
+        </details>
+        <details>
+          <summary>Төлем қалай жүзеге асады?</summary>
+          <p>Айлық немесе жылдық жоспар. Бот ішіндегі нұсқаулық арқылы төлемді аяқтай аласыз.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== CTA ============== -->
+  <section class="section" style="padding-top:0">
+    <div class="wrap card" style="padding:22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <div>
+        <h3 style="font-size:22px">TenderPro көмегімен сен де тендерді ұтып ал!</h3>
+        <p class="muted">Ештеңені жіберіп алмау үшін дәл қазір қосылып қой.</p>
+      </div>
+      <a class="cta" href="https://t.me/tenderprokz_bot" target="_blank" rel="noopener">Ботты іске қосу</a>
+    </div>
+  </section>
+
+  <!-- ============== FOOTER ============== -->
+  <footer>
+    <div class="wrap cols">
+      <div>
+        <div class="brand" style="margin-bottom:10px">
+          <div class="logo">⚡</div>
+          <b>TenderPro</b>
+        </div>
+        <p>Тендерлерді жеңуге арналған AI көмекші.</p>
+        <p class="hint" style="margin-top:8px">© 2023–2025 TenderPro. Барлық құқықтар қорғалған.</p>
+      </div>
+      <div>
+        <b>Байланыс</b>
+        <ul class="list">
+          <li><a href="mailto:support@tenderpro.kz">support@tenderpro.kz</a></li>
+          <li><a href="https://t.me/tenderprokz_bot" target="_blank" rel="noopener">@tenderprokz_bot</a></li>
+          <li><a href="tel:+77479894879">+7 747 989 4879</a></li>
+          <li>Астана, Қазақстан</li>
+        </ul>
+      </div>
+      <div>
+        <b>Анықтама</b>
+        <ul class="list">
+          <li><a href="#">Қолдану шарттары</a></li>
+          <li><a href="#">Құпиялылық саясаты</a></li>
+          <li><a href="#">Көмек орталығы</a></li>
+        </ul>
+      </div>
+      <div>
+        <b>Навигация</b>
+        <ul class="list">
+          <li><a href="#features">Мүмкіндіктер</a></li>
+          <li><a href="#pricing">Баға</a></li>
+          <li><a href="#demo">Демо</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const burger=document.getElementById('burger');
+    const mobile=document.getElementById('mobile');
+    burger?.addEventListener('click',()=>{
+      mobile.style.display = mobile.style.display==='block' ? 'none' : 'block';
+    });
+    // Pricing toggle
+    const mBtn=document.getElementById('mBtn');
+    const yBtn=document.getElementById('yBtn');
+    const monthly=[...document.querySelectorAll('[data-monthly]')];
+    const yearly=[...document.querySelectorAll('[data-yearly]')];
+    function setBilling(mode){
+      if(mode==='year'){ mBtn.classList.remove('active'); yBtn.classList.add('active');
+        monthly.forEach(el=>el.style.display='none'); yearly.forEach(el=>el.style.display='block');
+      }else{ yBtn.classList.remove('active'); mBtn.classList.add('active');
+        yearly.forEach(el=>el.style.display='none'); monthly.forEach(el=>el.style.display='block');
+      }
+    }
+    mBtn?.addEventListener('click',()=>setBilling('month'));
+    yBtn?.addEventListener('click',()=>setBilling('year'));
+  </script>
+</body>
+</html>
