@@ -956,6 +956,113 @@
             color: var(--text-secondary);
             font-size: 1rem;
         }
+
+
+        /* ===== Mobile/Tablet адаптация блока HOW-IT-WORKS ===== */
+@media (max-width: 1024px) {
+  .how-it-works .steps {
+    gap: 28px;
+  }
+  .how-it-works .step {
+    width: 160px;
+  }
+}
+
+/* Вертикальная таймлайн-версия на мобильных */
+@media (max-width: 768px) {
+  .how-it-works .steps {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    position: relative;
+    margin-top: 28px; /* меньше отступа сверху */
+  }
+
+  /* Горизонтальную линию превращаем в вертикальную */
+  .how-it-works .steps::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 36px;          /* позиция вертикальной линии */
+    right: auto;
+    width: 4px;
+    height: 100%;
+    background: var(--primary);
+    z-index: 0;
+    border-radius: 2px;
+  }
+
+  .how-it-works .step {
+    width: 100%;
+    text-align: left;
+    padding: 20px 16px 20px 88px; /* место под номер слева */
+    border-radius: 12px;
+    z-index: 1;
+  }
+
+  .how-it-works .step-number {
+    position: absolute;
+    left: 16px;
+    top: 20px;
+    width: 48px;
+    height: 48px;
+    font-size: 1.2rem;
+    margin: 0; /* убрать auto margin */
+  }
+
+  .how-it-works .step h3 {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+
+  .how-it-works .step p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  /* Кнопка CTA — удобная на тач-экранах */
+  .how-it-works .cta-button {
+    width: 100%;
+    max-width: 360px;
+    padding: 14px 18px;
+    font-size: 1rem;
+  }
+
+  /* Секции — немного воздуха по бокам */
+  .how-it-works .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* Компактная версия для очень маленьких экранов */
+@media (max-width: 480px) {
+  .how-it-works .steps::before {
+    left: 28px; /* чуть ближе к краю */
+  }
+
+  .how-it-works .step {
+    padding: 18px 14px 18px 76px;
+  }
+
+  .how-it-works .step-number {
+    left: 12px;
+    top: 18px;
+    width: 42px;
+    height: 42px;
+    font-size: 1.05rem;
+  }
+
+  .how-it-works .step h3 {
+    font-size: 1rem;
+  }
+
+  .how-it-works .step p {
+    font-size: 0.92rem;
+  }
+}
     </style>
 </head>
 <body>
