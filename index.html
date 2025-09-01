@@ -1239,20 +1239,7 @@
                     <a href="https://t.me/tenderprokz_bot"><button class="cta-button">Таңдау</button></a>
                 </div>
                 
-                <div class="pricing-card">
-                    <h3 class="plan-name">TenderPro Pro</h3>
-                    <div class="price-container">
-                        <div class="price" id="pro-price">19 990₸ <span>/ ай</span></div>
-                        <div class="savings-badge" id="pro-savings" style="display: none;">17% үнемдеу!</div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> 20 категорияға подписка</li>
-                        <li><i class="fas fa-check"></i> 300 ИИ талдау</li>
-                        <li><i class="fas fa-check"></i> Басымдықты қолдау</li>
-                        <li><i class="fas fa-check"></i> 🔜 Жақында: ИИ тауар іздеу satu.kz, kaspi.kz, jusan маркетплейстерінде</li>
-                    </ul>
-                    <a href="https://t.me/tenderprokz_bot"></a><button class="cta-button">Таңдау</button></a>
-                </div>
+               
             </div>
         </div>
     </section>
@@ -1468,8 +1455,7 @@
             monthlyBtn.addEventListener('click', () => {
                 monthlyBtn.classList.add('active');
                 yearlyBtn.classList.remove('active');
-                basicPrice.innerHTML = '4 990₸ <span>/ ай</span>';
-                proPrice.innerHTML = '9 990₸ <span>/ ай</span>';
+                basicPrice.innerHTML = '9 990₸ <span>/ ай</span>';
                 basicSavings.style.display = 'none';
                 proSavings.style.display = 'none';
             });
@@ -1478,7 +1464,6 @@
                 yearlyBtn.classList.add('active');
                 monthlyBtn.classList.remove('active');
                 basicPrice.innerHTML = '99 990₸ <span>/ жыл</span>';
-                proPrice.innerHTML = '199 990₸ <span>/ жыл</span>';
                 basicSavings.style.display = 'inline-block';
                 proSavings.style.display = 'inline-block';
             });
